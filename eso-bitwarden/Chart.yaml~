@@ -1,6 +1,0 @@
-apiVersion: v2
-name: eso-bw-certs
-description: Helm chart to provision certificates needed for bitwarden sdk server used by ESO
-type: application
-version: 0.1.0
-appVersion: "1.0"
