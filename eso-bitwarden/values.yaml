@@ -1,0 +1,4 @@
+---
+bitwarden:
+  host: "https://vault.bitwarden.com"
+  image: "ghcr.io/charlesthomas/bitwarden-cli:2025.12.1"

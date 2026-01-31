@@ -1,15 +1,14 @@
 apiVersion: v1
 entries:
-  eso-bw-certs:
+  eso-bitwarden:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2026-01-31T07:24:19.744281873-06:00"
-    description: Helm chart to provision certificates needed for bitwarden sdk server
-      used by ESO
-    digest: c5f8b5d76799be5e08ffcd0a7834addb00c0e4b55e043fd2a1033b80f068ad44
-    name: eso-bw-certs
+    created: "2026-01-31T12:35:17.109187938-06:00"
+    description: Helm chart to provision the bitwarden CLI for use with ESO
+    digest: 8d25a65181cea0d60ce16bfd5234d0e0c59d567b3b9c30bbceefd9193495c394
+    name: eso-bitwarden
     type: application
     urls:
-    - https://justinschw.github.io/homelab-charts/eso-bw-certs-0.1.0.tgz
+    - https://justinschw.github.io/homelab-charts/eso-bitwarden-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-31T07:24:19.744069921-06:00"
+generated: "2026-01-31T12:35:17.108790584-06:00"
