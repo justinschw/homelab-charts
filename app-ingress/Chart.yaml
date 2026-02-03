@@ -1,0 +1,6 @@
+apiVersion: v2
+name: app-ingress
+description: Helm chart to provision a wildcard TLS certificate via cert-manager using Cloudflare DNS-01 and Let's Encrypt
+type: application
+version: 0.1.0
+appVersion: "1.0"

@@ -1,0 +1,27 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: cloudflare-api-key
+  namespace: {{ .Values.externalSecrets.namespace | quote }}
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/name: {{ .Chart.Name }}
+spec:
+  refreshInterval: {{ .Values.externalSecrets.refreshInterval | quote }}
+  secretStoreRef:
+    name: {{ .Values.secretStore.name | quote }}
+    kind: ClusterSecretStore
+  target:
+    name: {{ .Values.issuer.cloudflareSecret.name | quote }}
+    creationPolicy: Owner
+  data:
+    - secretKey: apiKey
+      sourceRef:
+        storeRef:
+          name: {{ .Values.secretStore.name | quote }}
+          kind: ClusterSecretStore
+      remoteRef:
+        key: {{ .Values.issuer.cloudflareSecret.remoteKey |  quote }}
+{{- if .Values.issuer.cloudflareSecret.remoteProperty }}
+        property: {{ .Values.issuer.cloudflareSecret.remoteProperty | quote }}
+{{- end }}

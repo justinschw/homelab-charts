@@ -1,0 +1,17 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: ingress-pool
+  namespace: {{ .Values.publicIP.namespace | quote }}
+spec:
+  addresses:
+    - {{ .Values.publicIP.start }}-{{ .Values.publicIP.end }}
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: l2
+  namespace: {{ .Values.publicIP.namespace | quote }}
+spec:
+  ipAddressPools:
+    - ingress-pool
