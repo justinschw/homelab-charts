@@ -4,14 +4,7 @@ domain: homelab.schwfam.org
 
 issuer:
   name: letsencrypt-dns-cloudflare
-  email: justinmschw@gmail.com # replace with a valid email
   accountSecret: letsencrypt-account-key
-  cloudflareSecret:
-    name: cloudflare-api-key
-    key: 'apiKey'
-    # TODO: configure these in custom values
-    remoteKey: '17645397-3f3c-4fe7-97f1-b3e3006b2cf8'
-    remoteProperty: 'notes'
 
 externalSecrets:
   refreshInterval: 1h
@@ -23,49 +16,4 @@ secretStore:
 
 # TODO: configure this in custom values
 publicIP:
-  start: '10.88.1.200'
-  end: '10.88.1.210'
   namespace: metallb-system
-
-# TODO: configure this in custom values
-services:
-- name: jellyfin
-  ip: 10.12.1.30
-  port: 30013
-  hostname: jellyfin.homelab.schwfam.org
-- name: mealie
-  ip: 10.12.1.30
-  port: 30111
-  hostname: mealie.homelab.schwfam.org
-- name: minio
-  ip: 10.12.1.30
-  port: 9002
-  hostname: minio.homelab.schwfam.org
-- name: api-minio
-  ip: 10.12.1.30
-  port: 9000
-  hostname: api-minio.homelab.schwfam.org
-- name: ai
-  ip: 10.12.1.30
-  port: 31028
-  hostname: ai.homelab.schwfam.org
-- name: vault
-  ip: 10.12.1.30
-  port: 8200
-  hostname: vault.homelab.schwfam.org
-- name: proxmox
-  ip: 10.12.1.30
-  port: 8006
-  hostname: proxmox.homelab.schwfam.org
-- name: homeassistant
-  ip: 10.12.1.31
-  port: 8123
-  hostname: homeassistant.homelab.schwfam.org
-- name: pfsense
-  ip: 10.87.1.254
-  port: 443
-  hostname: pfsense.homelab.schwfam.org
-- name: ollama
-  ip: 10.12.1.32
-  port: 11434
-  hostname: ollama.homelab.schwfam.org
