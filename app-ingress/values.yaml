@@ -17,3 +17,6 @@ secretStore:
 # TODO: configure this in custom values
 publicIP:
   namespace: metallb-system
+
+ingress:
+  namespace: ingress-nginx

@@ -3,10 +3,10 @@ entries:
   app-ingress:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2026-02-03T06:52:45.773815719-06:00"
+    created: "2026-02-03T21:39:13.886255267-06:00"
     description: Helm chart to provision a wildcard TLS certificate via cert-manager
       using Cloudflare DNS-01 and Let's Encrypt
-    digest: 08b54cc005df02d0a5a1db2362864cf7f63269efdad608ebd980b6bb0480d7c4
+    digest: fef18e62a6ce226895a293afe31527b589af89d97d93fb8546de95abb59ae11a
     name: app-ingress
     type: application
     urls:
@@ -15,7 +15,7 @@ entries:
   eso-bitwarden:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2026-02-03T06:52:45.775344161-06:00"
+    created: "2026-02-03T21:39:13.886388479-06:00"
     description: Helm chart to provision the bitwarden CLI for use with ESO
     digest: 8d25a65181cea0d60ce16bfd5234d0e0c59d567b3b9c30bbceefd9193495c394
     name: eso-bitwarden
@@ -23,4 +23,4 @@ entries:
     urls:
     - https://justinschw.github.io/homelab-charts/eso-bitwarden-0.1.0.tgz
     version: 0.1.0
-generated: "2026-02-03T06:52:45.773497016-06:00"
+generated: "2026-02-03T21:39:13.885928098-06:00"
