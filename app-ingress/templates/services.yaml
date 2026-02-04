@@ -35,21 +35,25 @@ endpoints:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: app-ingress
+  name: app-ingress-http
   namespace: {{ $releaseNamespace }}
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-dns-cloudflare
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
 {{- range .Values.services }}
+{{- if not .https }}
         - {{ .hostname | quote }}
+{{- end}}
 {{- end }}
-      secretName: homelab-wildcard-tls
+      secretName: homelab-wildcard-tls-http
   rules:
 {{- range .Values.services }}
+{{- if not .https }}
     - host: {{ .hostname | quote }}
       http:
         paths:
@@ -60,6 +64,42 @@ spec:
                 name: {{ .name | quote }}
                 port:
                   number: {{ .port }}
+{{- end }}
+{{- end }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress-https
+  namespace: {{ $releaseNamespace }}
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-dns-cloudflare
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+{{- range .Values.services }}
+{{- if .https }}
+        - {{ .hostname | quote }}
+{{- end}}
+{{- end }}
+      secretName: homelab-wildcard-tls-https
+  rules:
+{{- range .Values.services }}
+{{- if .https }}
+    - host: {{ .hostname | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .name | quote }}
+                port:
+                  number: {{ .port }}
+{{- end }}
 {{- end }}
 ---
 apiVersion: v1
