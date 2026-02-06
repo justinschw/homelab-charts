@@ -1,0 +1,21 @@
+externalSecrets:
+  refreshInterval: 1h
+  secretStore:
+    name: bitwarden-notes
+  secret:
+    name: unseal-keys
+    # remoteKey is the key/path in the external store (set to your value)
+    remoteKey: homelab/unseal
+
+image:
+  repository: docker.io/jusschwa/homelab-unseal
+  tag: latest
+  pullPolicy: Always
+
+schedule: "*/2 * * * *"
+
+env:
+  baseUrl: https://example.com
+
+serviceAccount:
+  name: default

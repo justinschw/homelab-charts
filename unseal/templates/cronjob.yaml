@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ .Release.Name }}-unseal
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/name: {{ .Chart.Name }}
+spec:
+  schedule: {{ .Values.schedule | quote }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: {{ .Values.serviceAccount.name | quote }}
+          containers:
+            - name: unseal
+              image: {{ printf "%s:%s" .Values.image.repository .Values.image.tag | quote }}
+              imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+              env:
+                - name: BASE_URL
+                  value: {{ .Values.env.baseUrl | quote }}
+                - name: DNS_SERVERS
+                  value: {{ .Values.env.dnsServers | quote }}
+                - name: UNSEAL_KEYS
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ .Values.externalSecrets.secret.name | quote }}
+                      key: unseal_keys
+
