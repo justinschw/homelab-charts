@@ -1,6 +1,7 @@
 # Loop over services defined in values.yaml and create a Service for each
 {{- $releaseNamespace := .Release.Namespace }}
 {{- range .Values.services }}
+{{- if .external  }}
 ---
 apiVersion: v1
 kind: Service
@@ -30,6 +31,7 @@ endpoints:
       - {{ .ip | quote }}
     conditions:
       ready: true
+{{- end }}
 {{- end }}
 ---
 apiVersion: networking.k8s.io/v1
