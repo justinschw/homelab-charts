@@ -1,0 +1,22 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: smbcreds
+  namespace: {{ .Release.Namespace }}
+spec:
+  refreshInterval: "{{ .Values.externalSecret.refreshInterval }}"
+  secretStoreRef:
+    name: {{ .Values.externalSecret.secretStoreName | quote }}
+    kind: {{ .Values.externalSecret.secretStoreKind | quote }}
+  target:
+    name: {{ .Values.externalSecret.secretName | quote }}
+    creationPolicy: Owner
+  data:
+    - secretKey: username
+      remoteRef:
+        key: {{ .Values.externalSecret.remoteKey | quote }}
+        property: username
+    - secretKey: password
+      remoteRef:
+        key: {{ .Values.externalSecret.remoteKey | quote }}
+        property: password

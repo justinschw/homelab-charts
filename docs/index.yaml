@@ -3,7 +3,7 @@ entries:
   app-ingress:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2026-02-15T21:12:45.159074124-06:00"
+    created: "2026-02-20T22:09:57.964912209-06:00"
     description: Helm chart to provision a wildcard TLS certificate via cert-manager
       using Cloudflare DNS-01 and Let's Encrypt
     digest: 288feb184b6a076b53de64a7c03f28b4fc47810c352726aa29404a7222c04f21
@@ -12,10 +12,21 @@ entries:
     urls:
     - https://justinschw.github.io/homelab-charts/app-ingress-0.1.0.tgz
     version: 0.1.0
+  csi-storage:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-02-20T22:09:57.965332803-06:00"
+    description: CSI storage resources for homelab (StorageClass + helpers)
+    digest: 9170b51e4fdd3f492eec3a2410418d7f1d919006a3c715723df5c0ac7b526435
+    name: csi-storage
+    type: application
+    urls:
+    - https://justinschw.github.io/homelab-charts/csi-storage-0.1.0.tgz
+    version: 0.1.0
   eso-bitwarden:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2026-02-15T21:12:45.160604259-06:00"
+    created: "2026-02-20T22:09:57.965813413-06:00"
     description: Helm chart to provision the bitwarden CLI for use with ESO
     digest: 8d25a65181cea0d60ce16bfd5234d0e0c59d567b3b9c30bbceefd9193495c394
     name: eso-bitwarden
@@ -26,7 +37,7 @@ entries:
   unseal:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-02-15T21:12:45.161012183-06:00"
+    created: "2026-02-20T22:09:57.96656753-06:00"
     description: A chart to install a cronjob that runs the homelab unseal task
     digest: 8b2c8b7986fce10b33f7d83cd41619edcd36604be633296c94c5bd699b9bc5ce
     name: unseal
@@ -34,4 +45,4 @@ entries:
     urls:
     - https://justinschw.github.io/homelab-charts/unseal-0.1.0.tgz
     version: 0.1.0
-generated: "2026-02-15T21:12:45.158797971-06:00"
+generated: "2026-02-20T22:09:57.963142539-06:00"

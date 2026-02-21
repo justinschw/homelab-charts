@@ -1,0 +1,11 @@
+uid: 1001
+gid: 1001
+
+# ExternalSecret defaults for SMB credentials
+externalSecret:
+  namespace: "csi-driver-smb"
+  secretStoreName: 'bitwarden-login'
+  secretStoreKind: ClusterSecretStore
+  secretName: 'smbcreds'
+  remoteKey: 'homelab/smbcreds'
+  refreshInterval: 1h
